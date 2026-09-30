@@ -15,8 +15,8 @@ App Flutter (MVP) para **identificar vehiculos* y **obtener datos**.
 
 ```bash
 # 1. Clonar el repositorio
-git clone https://github.com/MoDz7Dev/Cultiva-Plus.git
-cd Cultiva-Plus            # la carpeta que contiene pubspec.yaml
+git clone https://github.com/MoDz7Dev/Placa-App.git
+cd Placa_App           # la carpeta que contiene pubspec.yaml
 
 # 2. Descargar dependencias (OBLIGATORIO la primera vez)
 flutter pub get
