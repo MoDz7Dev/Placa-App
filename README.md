@@ -134,7 +134,7 @@ flutter pub get
 dart run flutter_launcher_icons
 
 # Verificar instalacion del icono (Si sale hora y fecha reciente se cambio el icono)
-Get-ChildItem 'd:\Proyectos_App\cultiva_plus\android\app\src\main\res' -Recurse -Filter '*.png' | Select-Object Name, Length, LastWriteTime
+Get-ChildItem 'd:\Proyectos_App\placa_app\android\app\src\main\res' -Recurse -Filter '*.png' | Select-Object Name, Length, LastWriteTime
 
 # Limpia todo el build
 flutter clean
