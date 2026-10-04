@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:placa_app/presentation/screens/scan_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -40,7 +41,12 @@ class HomeScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10)
                     )
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => ScanScreen())
+                    );
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     spacing: 8,
