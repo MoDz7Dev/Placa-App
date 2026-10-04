@@ -98,6 +98,8 @@ git push origin --delete feature/login
 
 ### Solución de problemas (comandos Git)
 
+jc estuvo aquí
+
 | Comando | Acción | Ejemplo |
 | --- | --- | --- |
 | `git status` | Muestra el estado del repositorio: archivos modificados, nuevos y el estado del commit | `git status` |
