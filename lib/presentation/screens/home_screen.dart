@@ -19,60 +19,200 @@ class SlideData {
   });
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
-    final size = MediaQuery.sizeOf(context);
-    
+class _HomeScreenState extends State<HomeScreen> {
+  final PageController _pageController = PageController(viewportFraction: 1.0);
+  int _currentPage = 0;
+
+  final List<SlideData> _slides = [
+    SlideData(
+      image: 'assets/images/auto_suzuki.png',
+      title: 'Información rápida cuando más la necesitas',
+      subtitle: 'Verifica antecedentes antes de comprar y obtén asistencia inmediata en caso de choque.',
+      scale: 1.4, 
+      color: const Color(0xFF2C5282), 
+      xOffset: 0.0, 
+    ),
+    SlideData(
+      image: 'assets/images/auto_verde.png',
+      title: 'Localiza tu vehículo al instante',
+      subtitle: 'Sigue la ubicación de tu auto en tiempo real y mantén el control desde cualquier lugar.',
+      scale: 0.9, 
+      color: const Color(0xFF7CB342), 
+      xOffset: 0.0, 
+    ),
+    SlideData(
+      image: 'assets/images/auto_blanco.png',
+      title: 'Conoce el estado de tu auto',
+      subtitle: 'Revisa el historial de mantenimiento y el estado actual de tu vehículo con un solo toque.',
+      scale: 1.2, 
+      color: const Color(0xFFE0E0E0), 
+      xOffset: 60.0, 
+    ),
+  ];
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final currentColor = _slides[_currentPage].color;
+
     return Scaffold(
       backgroundColor: const Color(0xFF22252a),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 20, left: 35, right: 35),
-              child: Column(
-                children: [
-                  Text('Información rápida cuando más la necesitas', style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.bold),),
-                  SizedBox(height: 10),
-                  Text('Verifica antecedentes antes de comprar y obtén asistencia inmediata en caso de choque.', style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w200),),
-                ],
+      body: AnimatedContainer(
+        duration: const Duration(milliseconds: 500),
+        color: Color.lerp(const Color(0xFF22252a), currentColor, 0.15),
+        child: SafeArea(
+          child: Column(
+            children: [
+              Expanded(
+                child: PageView.builder(
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _currentPage = index;
+                    });
+                  },
+                  itemCount: _slides.length,
+                  itemBuilder: (context, index) {
+                    final slide = _slides[index];
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 30, left: 35, right: 35),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                slide.title,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                slide.subtitle,
+                                style: const TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        
+                        Expanded(
+                          child: ClipRect(
+                            child: Transform.translate( 
+                              offset: Offset(slide.xOffset, 0), 
+                              child: Transform.scale(
+                                scale: slide.scale,
+                                alignment: Alignment.center,
+                                child: SizedBox(
+                                  width: double.infinity,
+                                  child: Image.asset(
+                                    slide.image,
+                                    fit: BoxFit.fitWidth, 
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ),
-            ),
-            Positioned(
-              top: size.height * 0.25,
-              left: size.height * -0.1,
-              child: Image.asset('assets/images/auto_suzuki.png')
-            ),
-            Positioned(
-              bottom: size.height * 0.03,
-              left: size.width * 0.27 ,
-              child: SizedBox(
-                height: 52,
-                width: size.width * 0.5,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)
-                    )
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 8,
-                    children: [
-                      Text('Siguiente', style: TextStyle(color: Color(0xFF22252a), fontSize: 16),),
-                      Icon(Icons.chevron_right, size: 28,),
-                    ],
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  _slides.length,
+                  (index) => AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    margin: const EdgeInsets.symmetric(horizontal: 4),
+                    height: 8,
+                    width: _currentPage == index ? 24 : 8,
+                    decoration: BoxDecoration(
+                      color: _currentPage == index ? currentColor : Colors.white38,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                   ),
                 ),
               ),
-            )
-          ],
-        )
+              const SizedBox(height: 30),
+
+              Padding(
+                padding: const EdgeInsets.only(bottom: 30, left: 35, right: 35),
+                child: SizedBox(
+                  height: 55, 
+                  width: double.infinity,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 500),
+                    decoration: BoxDecoration(
+                      color: currentColor, 
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: currentColor.withValues(alpha: 0.3), 
+                          blurRadius: 15,
+                          offset: const Offset(0, 5),
+                        ),
+                      ],
+                    ),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent, 
+                        shadowColor: Colors.transparent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      // --- CAMBIO AQUÍ: Navegación al ScanScreen ---
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ScanScreen()),
+                        );
+                      },
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '¡Estoy listo!', 
+                            style: TextStyle(
+                              color: Color(0xFF22252a), 
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Icon(Icons.arrow_forward_rounded, color: Color(0xFF22252a)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
