@@ -701,10 +701,10 @@ class _ScanScreenState extends State<ScanScreen> with WidgetsBindingObserver, Ti
                           child: Row(
                             spacing: 5,
                             children: [
-                              CustomButtonText(text: 'Identificar Planta', isSelected: _opcionSeleccionada == 0,onPressed: () => setState(() => _opcionSeleccionada = 0),),
-                              CustomButtonText(text: 'Hierba', isSelected: _opcionSeleccionada == 1,onPressed: () => setState(() => _opcionSeleccionada = 1),),
-                              CustomButtonText(text: 'Arbol', isSelected: _opcionSeleccionada == 2,onPressed: () => setState(() => _opcionSeleccionada = 2),),
-                              CustomButtonText(text: 'Seta', isSelected: _opcionSeleccionada == 3,onPressed: () => setState(() => _opcionSeleccionada = 3),),
+                              CustomButtonText(text: 'Particular', isSelected: _opcionSeleccionada == 0,onPressed: () => setState(() => _opcionSeleccionada = 0), icon: Icons.fit_screen_rounded,),
+                              CustomButtonText(text: 'Servicio Publico', isSelected: _opcionSeleccionada == 1,onPressed: () => setState(() => _opcionSeleccionada = 1), icon: Icons.fit_screen_rounded),
+                              CustomButtonText(text: 'Gubernamental', isSelected: _opcionSeleccionada == 2,onPressed: () => setState(() => _opcionSeleccionada = 2), icon: Icons.fit_screen_rounded),
+                              CustomButtonText(text: 'Electrico', isSelected: _opcionSeleccionada == 3,onPressed: () => setState(() => _opcionSeleccionada = 3), icon: Icons.fit_screen_rounded),
                             ],
                           ),
                         ),
