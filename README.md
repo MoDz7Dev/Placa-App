@@ -9,6 +9,9 @@ App Flutter (MVP) para **identificar vehiculos* y **obtener datos**.
 - **Flutter 3.47.5 (stable) / Dart 3.13.4** — comprobar con `flutter --version`.
   El `pubspec.yaml` pide `sdk: ^3.13.3`; con un Flutter anterior, `flutter pub get` fallará con *version solving failed*.
 - **Android SDK 36** para ejecutar en Android, **o Chrome** para ejecutar en web.
+- **JDK 17** (p. ej. Temurin) con la variable `JAVA_HOME` definida — **imprescindible para compilar/ejecutar en Android** (Gradle lo necesita).
+  Comprueba con `flutter doctor`: la línea *Android toolchain* debe aparecer en verde. Si no, apunta Flutter a tu JDK con
+  `flutter config --jdk-dir=/ruta/al/jdk` y exporta `JAVA_HOME`.
 - Visual Studio **no** es necesario (solo haría falta para Windows desktop, que este proyecto no incluye).
 
 ## Puesta en marcha
@@ -160,6 +163,8 @@ flutter run
 | `version solving failed ... requires SDK version ^3.13.3` | Flutter/Dart más antiguo que el exigido | `flutter upgrade` o bajar la restricción en `pubspec.yaml` |
 | `Unable to locate gradlew script` al compilar Android | Faltan `gradlew`, `gradlew.bat` y `gradle-wrapper.jar` (están ignorados en `android/.gitignore`, es normal) | Usa siempre `flutter run`/`flutter build`: el tool de Flutter los regenera. No ejecutes `gradlew` a mano |
 | La terminal compila pero VS Code sigue en rojo | El analysis server quedó apuntando a la carpeta equivocada | Reabrir la carpeta del `pubspec.yaml` y ejecutar **Dart: Restart Analysis Server** |
+| `ERROR: JAVA_HOME is not set and no 'java' command could be found` al `flutter run` / `flutter build apk` | No hay JDK instalado o `JAVA_HOME` no está definido | Instala un JDK 17, exporta `export JAVA_HOME=/ruta/al/jdk` y/o ejecuta `flutter config --jdk-dir=/ruta/al/jdk`; verifica con `flutter doctor` |
+| `Cannot find Chrome executable at google-chrome` en `flutter doctor` | El ejecutable de Chrome no está en el `PATH` | `export CHROME_EXECUTABLE=/ruta/a/chrome` (p. ej. `/opt/google/chrome/chrome`) y volver a ejecutar `flutter run -d chrome` |
 
 ## Estructura del proyecto
 
