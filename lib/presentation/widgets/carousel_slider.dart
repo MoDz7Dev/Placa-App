@@ -125,7 +125,7 @@ class _CarouselSliderState extends State<CarouselSlider> {
               decoration: BoxDecoration(
                 color: _currentPage == index
                     ? widget.slides[_currentPage].color
-                    : Colors.white38,
+                    : const Color(0x61FFFFFF),
                 borderRadius: BorderRadius.circular(4),
               ),
             ),
