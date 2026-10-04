@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:placa_app/config/theme/app_theme.dart';
 import 'scan_screen.dart';
 import 'placa_entry_screen.dart';
 
@@ -8,7 +9,7 @@ class OptionsScreen extends StatelessWidget {
   const OptionsScreen({super.key, required this.baseColor});
 
   // --- Paleta del diseño ---
-  static const Color _cream = Color(0xff3e4044);
+  static const Color _cream = kDarkBackground;
   static const Color _white = Color(0xFFFFFFFF); // tarjeta 1
   static const Color _blue = Color(0xFF2451B2); // tarjeta 2
   static const Color _navy = Color(0xFF1E3A5F); // texto oscuro
@@ -22,14 +23,33 @@ class OptionsScreen extends StatelessWidget {
           children: [
             Column(
               children: [
-                // --- Barra superior con botón atrás ---
+                // --- Barra superior: botón atrás + título ---
                 Padding(
-                  padding: const EdgeInsets.only(top: 8, left: 8),
+                  padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      // Botón atrás (chevron blanco, sin fondo)
                       IconButton(
-                        icon: const Icon(Icons.arrow_back_ios_new, color: _navy),
+                        icon: const Icon(
+                          Icons.arrow_back_ios_new,
+                          color: Colors.white,
+                          size: 22,
+                        ),
                         onPressed: () => Navigator.pop(context),
+                      ),
+                      const SizedBox(width: 14),
+                      // Título de la pantalla
+                      const Expanded(
+                        child: Text(
+                          '¿Cómo deseas colocar la información de tu vehículo?',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            height: 1.2,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
                       ),
                     ],
                   ),
