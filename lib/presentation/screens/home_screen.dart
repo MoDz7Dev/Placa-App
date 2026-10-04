@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: 'Localiza tu vehículo al instante',
       subtitle: 'Sigue la ubicación de tu auto en tiempo real y mantén el control desde cualquier lugar.',
       scale: 0.5,
-      color: kSecondaryBlue, 
+      color: kPrimaryBlue, 
       xOffset: -10.0, // <--- Ajustado: Un poquito a la izquierda
       yOffset: 0.0,
       type: SlideContentType.mapRoute, // <--- Slide con cards + mapa animado

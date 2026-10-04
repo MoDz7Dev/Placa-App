@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 /// Color base azulado de la app (tono de fondo del primer slide).
-const Color kPrimaryBlue = Color.fromARGB(255, 31, 92, 167);
-const Color kSecondaryBlue = Color(0xFF6187E1);
+const Color kPrimaryBlue = Color(0xFF2451B2);
+const Color kSecondaryBlue = Color(0xFF32426A);
 
 /// Fondo oscuro azulado de las pantallas.
 const Color kDarkBackground = Color(0xFF1B2A3A);

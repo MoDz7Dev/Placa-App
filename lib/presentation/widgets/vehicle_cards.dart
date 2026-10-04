@@ -83,7 +83,7 @@ class _VehicleCard extends StatelessWidget {
       width: 150,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: kPrimaryBlue,
+        color: kSecondaryBlue,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(

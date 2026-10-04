@@ -10,7 +10,7 @@ class OptionsScreen extends StatelessWidget {
   // --- Paleta del diseño ---
   static const Color _cream = Color(0xff3e4044);
   static const Color _white = Color(0xFFFFFFFF); // tarjeta 1
-  static const Color _blue = Color(0xFF2563EB); // tarjeta 2
+  static const Color _blue = Color(0xFF2451B2); // tarjeta 2
   static const Color _navy = Color(0xFF1E3A5F); // texto oscuro
 
   @override
