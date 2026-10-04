@@ -23,7 +23,7 @@ class CustomActionButton extends StatelessWidget {
     final Color contentColor = isDarkColor ? Colors.white : const Color(0xFF22252a);
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: 30, left: 35, right: 35),
+      padding: const EdgeInsets.only(bottom: 35, left: 35, right: 35),
       child: SizedBox(
         height: 55,
         width: double.infinity,
@@ -31,7 +31,7 @@ class CustomActionButton extends StatelessWidget {
           duration: const Duration(milliseconds: 500),
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
                 color: color.withValues(alpha: 0.3),
@@ -50,19 +50,18 @@ class CustomActionButton extends StatelessWidget {
             ),
             onPressed: onPressed,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   text,
                   style: TextStyle(
                     color: contentColor, // <--- Color dinámico
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 if (icon != null) ...[
                   const SizedBox(width: 8),
-                  Icon(icon, color: contentColor), // <--- Color dinámico
+                  Icon(icon, color: contentColor, size: 24,), // <--- Color dinámico
                 ],
               ],
             ),

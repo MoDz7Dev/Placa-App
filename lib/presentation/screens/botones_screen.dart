@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:placa_app/config/theme/app_theme.dart';
 import '../widgets/custom_action_button.dart';
 import 'scan_screen.dart';
 import 'placa_entry_screen.dart'; 
@@ -11,11 +12,8 @@ class OptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: AnimatedContainer(
-        duration: const Duration(milliseconds: 500),
-        color: Color.lerp(const Color(0xFF22252a), baseColor, 0.15),
-        child: SafeArea(
+      backgroundColor: kDarkBackground,
+      body: SafeArea(
           child: Column(
             children: [
               Padding(
@@ -77,7 +75,6 @@ class OptionsScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }

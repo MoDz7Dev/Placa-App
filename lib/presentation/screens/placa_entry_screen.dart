@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:placa_app/config/theme/app_theme.dart';
 import '../widgets/custom_action_button.dart';
 
 class PlateEntryScreen extends StatefulWidget {
@@ -50,11 +51,8 @@ class _PlateEntryScreenState extends State<PlateEntryScreen> {
     final bottomInset = MediaQuery.of(context).viewInsets.bottom;
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: AnimatedContainer(
-        duration: const Duration(milliseconds: 500),
-        color: Color.lerp(const Color(0xFF22252a), widget.baseColor, 0.15),
-        child: SafeArea(
+      backgroundColor: kDarkBackground,
+      body: SafeArea(
           child: Column(
             children: [
               // --- AppBar personalizada ---
@@ -187,7 +185,6 @@ class _PlateEntryScreenState extends State<PlateEntryScreen> {
             ],
           ),
         ),
-      ),
     );
   }
 }
